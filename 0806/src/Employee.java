@@ -1,0 +1,30 @@
+
+public class Employee {
+	private String name;
+	private double salary;
+	
+//	{
+//		this.name = "¿Ã¡¯øı";
+//		this.salary = 3000000;
+//	}
+//	
+//	
+	public Employee(String name, double salary) {
+		this.name = name;
+		this.salary = salary;
+	}
+	public Employee(double salary) {
+		this("±ËπŒ»£", 2000000);
+	}
+	public Employee() {
+		this("¿Ã¡¯øı",3000000);
+	}
+	public Employee(String name) {
+		this(name , 3000000);
+	}
+	
+	public void display() {
+		System.out.println(this.name + "  " + this.salary);
+	}
+	
+}

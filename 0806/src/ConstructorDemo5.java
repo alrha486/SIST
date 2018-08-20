@@ -1,0 +1,14 @@
+
+public class ConstructorDemo5 {
+public static void main(String[] args) {
+//	Employee e = new Employee("¿Ã¡¯øı", 3000000);
+//	e.display();
+//
+//	Employee r = new Employee("±ËπŒ»£");
+//	r.display();
+//}
+	Employee e = new Employee(1999999);
+	e.display();
+
+}
+}
