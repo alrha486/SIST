@@ -12,53 +12,51 @@ public class EchoTcpClient {
 	private Socket socket;
 	private PrintWriter pw;
 	private BufferedReader br;
-	
 	EchoTcpClient(){
 		try {
-			this.socket = new Socket(InetAddress.getByName("E-00"),60000);  // 클라이언트 소켓과 서버소켓의 연결
-			System.out.println("방금 서버와 연결되었습니다.");
+			this.socket = new Socket(InetAddress.getByName("E-00"), 60000);//Socket(IP , port번호);
+			System.out.println(InetAddress.getByName("localhost")+" 방금 서버와 연결되었습니다.");
 			this.pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(this.socket.getOutputStream())));
 			this.br = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+			
 		} catch (IOException e) {
 			System.out.println(e);
 		}
 	}
 	
-	private void service() throws IOException { // 서버에게 데이터를 보낼 service();
+	private void service() {
 		Scanner scan = new Scanner(System.in);
-		while(true) {
-			System.out.print("서버에게 보낼 메시지를 입력해주세요 : ");
-			String line = scan.nextLine();
-			if(line.equals("Bye")) {
+		try {
+			while (true) {
+				System.out.print("서버에 보낼 메시지 : ");
+				String line = scan.nextLine();
+				if (line.equals("bye")) {
+					this.pw.println(line);
+					this.pw.flush();
+					break;
+				}
 				this.pw.println(line);
-				this.pw.flush(); 
-				break; // Bye가 들어오면 무한루프 종료
+				this.pw.flush();
+				String msg = this.br.readLine();// 서버로 부터 온 메시지
+				System.out.println("Message From Server : " + msg);
 			}
-			this.pw.println(line);
-			this.pw.flush();
-			String massage = this.br.readLine();
-			System.out.println("Message From Server : " + massage);
-			
+		} catch (IOException e) {
+			System.out.println(e);
 		}
-		
 	}
 	
-	protected void finalize() {
+	@Override
+	protected void finalize() {//소멸자
 		try {
 			this.socket.close();
 			this.br.close();
 			this.pw.close();
-		} catch (IOException e) {
+		}catch(IOException e) {
 			System.out.println(e);
 		}
 	}
 	
 	public static void main(String[] args) {
-		try {
-			new EchoTcpClient().service();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		new EchoTcpClient().service();
 	}
 }
