@@ -22,7 +22,7 @@ public class DBConnection {
 		}	
 
 	public Connection getConnection() {
-		Connection conn = null;
+		Connection conn = null; // connection은 url, id, pw으로 연결
 		try {
 			conn = DriverManager.getConnection(dbinfo.getProperty("DBURL"), // url
 												dbinfo.getProperty("DBUSER"), // user
