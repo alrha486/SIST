@@ -49,7 +49,7 @@ public class Input extends JPanel implements ActionListener{ // 인풋클래스는 JPa
 		JPanel pCenter = new JPanel();
 		pCenter.setLayout(new GridLayout(6,2,10,10));//6행2열 10 씩 위아래 공백/ n등분 정확하게 나누는 gridlayout
 		
-		pCenter.add(this.lblHakbun = new JLabel("학번 : "));;
+		pCenter.add(this.lblHakbun = new JLabel("학번 : "));
 		this.lblHakbun.setFont(this.font);
 		pCenter.add(this.tfHakbun = new JTextField());
 		this.tfHakbun.setFont(this.font);

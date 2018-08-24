@@ -18,6 +18,7 @@ public class BorderLayoutDemo {
       };
    }
    private void display() {
+	   
       this.con.add("North",this.array[0]);
       this.con.add(this.array[1],"South");//only 첫글자는 대문자
       this.con.add(BorderLayout.EAST,this.array[2]);//위치를 상수

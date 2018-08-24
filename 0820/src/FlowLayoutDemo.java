@@ -40,8 +40,7 @@ public class FlowLayoutDemo {
 		      this.frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//[x]버튼 활성화
 		      this.frm.setVisible(true);//반드시
 	   }
-	
-	
+
 	public static void main(String[] args) {
 		new FlowLayoutDemo("FlowLayoutDemo").display();
 	}
